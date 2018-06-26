@@ -9,12 +9,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    
     <title>SAC</title>
     <!-- Bootstrap Core CSS -->
-    <link href="../assets/node_modules/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" >
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet">
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+       ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     
 </head>
 
@@ -45,8 +50,8 @@
                                 <h4 class="card-title">Participants</h4>
                                 
                                 <div class="table-responsive">
-                                    <table class="table table-striped ">
-                                        <thead>
+                                    <table class="table table-striped " id="table">
+                                        
                                             <tr>
                                                 <th>#</th>
                                                 <th>Name</th>
@@ -54,8 +59,7 @@
                                                 <th>Email</th>
                                                 <th>Status</th>
                                             </tr>
-                                        </thead>
-                                        <tbody>
+                                        
                                             <tr>
                                                 <td>1</td>
                                                 <td>Deshmukh</td>
@@ -98,7 +102,7 @@
                                                 <td>@Sonu</td>
                                                 <th>pending</th>
                                             </tr>
-                                        </tbody>
+                                        
                                     </table>
                                 </div>
                             </div>
@@ -127,15 +131,26 @@
     <!-- ============================================================== -->
     <!-- End Wrapper -->
     
-    <script src="../assets/node_modules/jquery/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="../assets/node_modules/bootstrap/js/popper.min.js"></script>
-    <script src="../assets/node_modules/bootstrap/js/bootstrap.min.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    .0
-    <!-- jQuery peity -->
-    <script src="../assets/node_modules/peity/jquery.peity.min.js"></script>
-    <script src="../assets/node_modules/peity/jquery.peity.init.js"></script>
+    
+    <script >
+        $(function(){
+    $.getJSON("",function(data){
+        var bio = '';
+        $.each(data,function(key,value) {
+            // body...
+            bio +='<tr>';
+            bio +='<td>'+value.n+'</td>';
+            bio +='<td>'+value.name+'</td>';
+            bio +='<td>'+value.college+'</td>';
+            bio +='<td>'+value.email+'</td>';
+            bio +='<td>'+value.status+'</td>';
+            bio +='<tr>';
+        });
+        $('#table').append(bio);
+    });
+});
+
+
 </body>
 
 </html>
